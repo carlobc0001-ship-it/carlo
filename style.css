@@ -1,0 +1,664 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #1c1f24;
+}
+
+
+/* =========================================
+   ROOM
+========================================= */
+
+.room {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 38% 45%,
+            #4a483d 0%,
+            #38372f 20%,
+            #292a26 50%,
+            #1c1f1d 100%
+        );
+
+    transition:
+        background 1s ease;
+}
+
+
+/* =========================================
+   DARK STATE
+========================================= */
+
+.room:not(.light-on) {
+
+    background:
+        radial-gradient(
+            circle at 38% 45%,
+            #34342e 0%,
+            #292a26 30%,
+            #20221f 65%,
+            #171918 100%
+        );
+}
+
+
+/* =========================================
+   LIGHT GLOW
+========================================= */
+
+.light-glow {
+
+    position: absolute;
+
+    left: 10%;
+    top: 5%;
+
+    width: 60%;
+    height: 80%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 226, 145, 0.40),
+            rgba(255, 220, 120, 0.12) 35%,
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.room.light-on .light-glow {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================
+   LAMP
+========================================= */
+
+.lamp {
+
+    position: absolute;
+
+    left: 28%;
+
+    top: 42%;
+
+    width: 180px;
+
+    height: 330px;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* =========================================
+   LAMP SHADE
+========================================= */
+
+.lamp-shade {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 0;
+
+    width: 150px;
+
+    height: 75px;
+
+    border-radius:
+        80%
+        80%
+        30%
+        30%;
+
+    background: #dad8d1;
+
+    box-shadow:
+        0 5px 8px rgba(0,0,0,0.25);
+
+    transition:
+        background 0.6s ease,
+        box-shadow 0.8s ease;
+}
+
+
+/* underside */
+
+.lamp-shade::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 12px;
+
+    bottom: -4px;
+
+    width: 126px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #b6a66f;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   BULB
+========================================= */
+
+.bulb {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -4px;
+
+    transform: translateX(-50%);
+
+    width: 65px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #c6b879;
+
+    opacity: 0.35;
+
+    transition:
+        opacity 0.5s ease,
+        box-shadow 0.8s ease;
+}
+
+
+/* LIGHT ON */
+
+.room.light-on .lamp-shade {
+
+    background: #f4f2ec;
+
+    box-shadow:
+
+        0 0 15px rgba(255, 242, 190, 0.9),
+
+        0 0 40px rgba(255, 225, 130, 0.65),
+
+        0 0 80px rgba(255, 215, 110, 0.35);
+}
+
+
+.room.light-on .bulb {
+
+    opacity: 1;
+
+    background: #fff5c9;
+
+    box-shadow:
+
+        0 0 15px #fff0a8,
+
+        0 0 40px rgba(255, 220, 120, 0.8);
+}
+
+
+/* =========================================
+   LAMP POLE
+========================================= */
+
+.lamp-pole {
+
+    position: absolute;
+
+    left: 80px;
+
+    top: 67px;
+
+    width: 12px;
+
+    height: 170px;
+
+    background: #d3d1ca;
+
+    border-radius: 5px;
+}
+
+
+/* =========================================
+   LAMP BASE
+========================================= */
+
+.lamp-base {
+
+    position: absolute;
+
+    left: 42px;
+
+    bottom: 25px;
+
+    width: 86px;
+
+    height: 12px;
+
+    border-radius: 20px;
+
+    background: #d3d1ca;
+}
+
+
+/* =========================================
+   PULL STRING
+========================================= */
+
+.pull-area {
+
+    position: absolute;
+
+    left: 91px;
+
+    top: 70px;
+
+    width: 50px;
+
+    height: 160px;
+
+    cursor: grab;
+
+    touch-action: none;
+
+    z-index: 10;
+}
+
+
+.pull-string {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 0;
+
+    width: 2px;
+
+    height: 100px;
+
+    background: #77746c;
+
+    transform-origin: top;
+}
+
+
+.pull-handle {
+
+    position: absolute;
+
+    left: 3px;
+
+    top: 96px;
+
+    width: 16px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: #d9a171;
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,0.3);
+
+    transition:
+        top 0.18s cubic-bezier(.2,.8,.3,1);
+}
+
+
+.pull-area:active {
+
+    cursor: grabbing;
+}
+
+
+/* =========================================
+   LOGIN BOX
+========================================= */
+
+.login-box {
+
+    position: absolute;
+
+    left: 68%;
+
+    top: 50%;
+
+    width: 300px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(115, 111, 91, 0.28);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(40px)
+        scale(0.92);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   SHOW LOGIN
+========================================= */
+
+.room.light-on .login-box {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.login-box h1 {
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color: #eeeeeb;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.input-group {
+
+    margin-bottom: 15px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #aaa89e;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-wrapper {
+
+    position: relative;
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    height: 36px;
+
+    padding:
+        0 38px
+        0 13px;
+
+    border-radius: 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    transition:
+        border 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.input-wrapper input:focus {
+
+    border-color:
+        rgba(236, 216, 142, 0.7);
+
+    background:
+        rgba(255,255,255,0.12);
+}
+
+
+.input-wrapper input::placeholder {
+
+    color: #aaa99f;
+}
+
+
+/* =========================================
+   USER ICON
+========================================= */
+
+.user-icon {
+
+    position: absolute;
+
+    right: 10px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 12px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+#loginButton {
+
+    width: 100%;
+
+    height: 36px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 12px;
+
+    color: #26231b;
+
+    background:
+        linear-gradient(
+            110deg,
+            #d7c16e,
+            #fff0a8,
+            #d7c16e
+        );
+
+    box-shadow:
+        0 5px 15px
+        rgba(220, 195, 100, 0.15);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#loginButton:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(230, 205, 110, 0.35);
+}
+
+
+#loginButton:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .lamp {
+
+        left: 25%;
+
+        top: 42%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.8);
+    }
+
+
+    .login-box {
+
+        left: 70%;
+
+        width: 260px;
+
+        padding: 25px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .lamp {
+
+        left: 28%;
+
+        top: 32%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+
+    .login-box {
+
+        left: 50%;
+
+        top: 72%;
+
+        width: 280px;
+    }
+
+}

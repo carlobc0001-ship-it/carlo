@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pull String Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="room" id="room">
+
+    <!-- =========================
+         LIGHT GLOW
+    ========================== -->
+    <div class="light-glow"></div>
+
+
+    <!-- =========================
+         LAMP
+    ========================== -->
+    <div class="lamp">
+
+        <!-- Lamp shade -->
+        <div class="lamp-shade">
+            <div class="bulb"></div>
+        </div>
+
+        <!-- Lamp pole -->
+        <div class="lamp-pole"></div>
+
+        <!-- Lamp base -->
+        <div class="lamp-base"></div>
+
+
+        <!-- Pull string -->
+        <div class="pull-area" id="pullArea">
+
+            <div class="pull-string" id="pullString"></div>
+
+            <div class="pull-handle" id="pullHandle"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         LOGIN FORM
+    ========================== -->
+    <div class="login-box" id="loginBox">
+
+        <h1>Welcome</h1>
+
+        <div class="input-group">
+
+            <label>Username</label>
+
+            <div class="input-wrapper">
+
+                <input
+                    type="text"
+                    placeholder="Enter name"
+                    id="username"
+                >
+
+                <span class="user-icon">👤</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>Password</label>
+
+            <div class="input-wrapper">
+
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    id="password"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button id="loginButton">
+            Sign In
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
